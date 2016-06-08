@@ -15,6 +15,15 @@ import android.widget.TextView;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.squareup.okhttp.Call;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+
+import java.io.IOException;
 
 public class UploadAccount extends AppCompatActivity {
 
@@ -121,6 +130,33 @@ public class UploadAccount extends AppCompatActivity {
         Log.d("8June","In_Out ==> "+ inOutAnInt);
         Log.d("8June","Category ==> "+ categoryString);
         Log.d("8June","Amount ==> "+ amountString);
+
+        //การโยนข้อมูลขึ้น server
+        OkHttpClient okHttpClient = new OkHttpClient();
+        RequestBody requestBody = new FormEncodingBuilder()
+                .add("isAdd","true")
+                .add("id_user",loginStrings[0])
+                .add("Date",getIntent().getStringExtra("Date"))
+                .add("In_Out",Integer.toString(inOutAnInt))
+                .add("Category", categoryString)
+                .add("Amount",amountString)
+                .build();
+
+        Request.Builder builder = new Request.Builder();
+        Request request = builder.url("http://swiftcodingthai.com/pbru2/add_account_master.php")
+                .post(requestBody).build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Response response) throws IOException {
+            finish();
+            }
+        });
 
 
     }
