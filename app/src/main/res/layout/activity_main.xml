@@ -2,17 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="pbru.prahaphorn.itpbru.MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    tools:context="pbru.prahaphorn.itpbru.MainActivity"
+    android:background="@drawable/bg27">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -25,7 +21,8 @@
             android:layout_height="wrap_content"
             android:text="Sign In"
             android:id="@+id/button"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:onClick="clickSignIn" />
 
         <Button
             android:layout_width="wrap_content"
@@ -34,6 +31,37 @@
             android:id="@+id/button2"
             android:layout_weight="1"
             android:onClick="ClickSignUpMain" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:padding="20dp"
+        android:background="#3cffffff">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/logo_pbru" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText5"
+            android:hint="User :"
+            android:textColorHint="@color/abc_input_method_navigation_guard" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText6"
+            android:hint="Password :"
+            android:inputType="textPassword"
+            android:textColorHint="@color/abc_input_method_navigation_guard" />
     </LinearLayout>
 
 </RelativeLayout>
